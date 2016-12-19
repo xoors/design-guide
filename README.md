@@ -8,7 +8,7 @@ This document is meant to be a living document. The software development standar
 
 The aims of the software design are to:
 
-+ Define a list of the recommended technologies best practices, frameworks, and design patterns to be used as the development standard.
++ Define a list of the recommended technologies best practices, frameworks, and design patterns to be used as the development standards.
 + Set a path for adopting and/or migrating to the recommended technologies, frameworks and design patterns.
 + Ensure consistency and future extendability of the design.
 + Achieve high maintainability of the code.
@@ -24,9 +24,9 @@ At the high-level, the design consists of 3 main layers:
 
 The principles of these layers are:
 
-+ All communications between client and server are done through one centralized service gateway. This is to make sure security enforcements, session management and common logic are managed in one common place.
++ All communications between client and server are done through one centralized service gateway. This is to make sure security enforcements, session management and common logic are managed at one common place.
 + Microservices consists of business and data logics, Client Apps should purely handle user interface (UI) and user experience (UX) logic.
-+ Microservices should be independent and have no awareness of their surrounding. The actions requested to microservices is done by interaction through its defined unique keys.
++ Microservices should be independent and have no awareness of their surrounding. The actions requested to microservices are done by interaction through its defined unique keys.
 + Reduce cross-dependency between client apps, service gateway and microservices. The structure should allow the setup of multi small independent teams to manage microservices and client apps, and on the same time to ensure a single control of security and common logic in one centralized small service gateway team.
 
 ### Microservices
@@ -84,14 +84,24 @@ In order to develop a high performance web application, there are some best prac
 + Use image sprite to reduce client requests to the server.
 + Use compression, e.g. image compression, page compression.
 + Implement adaptive JavaScript logic to decide a specific image size to send to small size devices.
-+ Use CSS or SVG for icons, logos, buttons, or small size images.
++ Use CSS or SVG for icons, logos, buttons, or adjustable size images.
 + Make sure all client logics and contents are cacheable on CDN (Content Delivery Network). Set appropriate cache settings and expiration time.
 + Remove unused JS and CSS components. Avoid from blindly using common superset framework. Common framework tends to be packaged with all supported components which all of them may not be used in your application.
 + Use 'rem' instead of 'px' to reduce hardcode logic and redundant code in CSS.
-+ Adopt 'Client MVC' design, do not use server side to process UI / UX logic. For e.g. using JSP code to produce HTML output is not advisable.
++ Adopt 'Client MVC' design, do not use server side to process UI / UX logic.
++ Use 'Single Page Application' design.
++ HTML DOM processing is slow, adopt 'Virtual DOM' approach.
 + Clean segregation between UI / UX, Content, and Data logic.
 + Implement 'Event Driven Design'. A request to and response from server should be specific to the event triggered from the client, for e.g.: Pagination logic, clicking on the next page should be responded only with data as the output. Changing language preference should be responded only with contents specific to the active page.
 + On mobile app, UI / UX artifacts should be wrapped on the app. Use wrapper framework like Cordova / PhoneGap.
-+ ...
++ Use 'Crosswalk - crosswalk-project.org' with Cordova to improve performance for hybrid mobile app.
++ Avoid network access as much as possible. Do not call server for landing / first page. When it is needed, it should be a non-blocking call.
++ Do not wait for the data to display the UI.
++ Minify everything including HTML and JSON contents.
++ Minimize number of redirects, number of server client roundtrips.
++ Reduce as much as possible requests to server, combine JS artifacts into limited files. JS should be called at the bottom of the page.
++ Clean up developer comments and console.log.
++ Optimize server side logging. On production environment, only FATAL and ERROR logging should be enabled.
++ Use performance speed test to identify bottlenecks, for e.g. 'Google PageSpeed'.
 
 ## Team Structure
