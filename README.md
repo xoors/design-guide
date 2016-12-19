@@ -20,7 +20,7 @@ At the high-level, the design consists of 3 main layers:
 + Service Gateway
 + Client Apps
 
---- Image diagram ---
+![High-level Design Diagram](docs/high-level-design.svg)
 
 The principles of these layers are:
 
