@@ -38,10 +38,14 @@ The characteristics of microservices are:
 + Communicate over network via 'technology agnostic' protocols
 + Stateless
 
-Make use of 'Domain Driven Design', which consists of:
+Make use of 'Domain-Driven Design', which consists of below building blocks:
 
-+ Service layer
-+ Persistent / Data layer
++ **Entity** is an object with an individual identity, e.g. Customers, Items.
++ **Value Objects** do not have their own identity, e.g. Address, it makes sense only in the context of a specific customer.
++ **Aggregates** are composite domain objects. Aggregates are special importance of ...
++ **Services** contains business logic.
++ **Repositories** serve to access all entities. Typically, there is persistent database behind repository.
++ Factories
 
 ### Service Gateway
 
