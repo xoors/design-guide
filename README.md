@@ -1,6 +1,6 @@
 # Design Guide
 
-This is a DRAFT design guide outlining opinions on software development best practices, standards, design patterns, frameworks, and the setup of development team structure & formation. The focus of this design guide is primarily intended for developing modern web and mobile application.
+This is a DRAFT design guide outlining opinions on software development best practices, standards, frameworks, and design patterns. It also covers the recommendation for setting up an efficient development structure and team formation. The focus of this design guide is primarily intended for the development of modern web and mobile application.
 
 This document is meant to be a living document. The software development standards, design patterns, frameworks, and best practices are continuously changing, and as they do and have been validated, this document will be updated accordingly.
 
@@ -16,18 +16,18 @@ The aims of the software design are to:
 
 At the high-level, the design consists of 3 main layers:
 
-+ Microservices
-+ Service Gateway
 + Client Apps
++ Service Gateway
++ Microservices
 
 ![High-level Design Diagram](docs/high-level-design.png)
 
 The principles of these layers are:
 
-+ All communications between client and server are done through one centralized service gateway. This is to make sure security enforcements, session management and common logic are managed at one common place.
-+ Microservices consists of business and data logics, Client Apps should purely handle user interface (UI) and user experience (UX) logic.
++ All communications between client and server are done through a centralized service gateway. This is to make sure security enforcements, session management and common logic are managed in one common place.
++ Microservices consists of business and data logic, Client Apps should purely handle user interface (UI) and user experience (UX) logic.
 + Microservices should be independent and have no awareness of their surrounding. The actions requested to microservices are done by interaction through its defined unique keys.
-+ Reduce cross-dependency between client apps, service gateway and microservices. The structure should allow the setup of multi small independent teams to manage microservices and client apps, and on the same time to ensure a single control of security and common logic in one centralized small service gateway team.
++ Reduce cross-dependency between client apps, service gateway and microservices. The structure should allow the setup of multiple small independent agile teams to manage microservices and client apps, and on the same time to ensure a single control of security and common logic in a centralized small service gateway team.
 
 ### Microservices
 
@@ -67,7 +67,11 @@ The responsibilities of Service Gateway are:
 
 ### Client Apps
 
-Client Apps consists of user interface (UI) and experience (UX) logics, these are executed at the client device or browser. We recommends to use 'Responsive Web Design' primarily because we believe web technology will continue to advance further at faster pace, and the trend will lead to technology investments to evolve mostly around web technology. The speed and performance of browser engines will continue to improve, and devices as well as the speed of internet connection will greatly increased as well. There are some best practices for developing high performance web application, refer to [Performance Best Practices](#performance-best-practices)
+Client Apps consists of user interface (UI) and experience (UX) logic, these are executed at the client devices or browsers. We recommends to use 'Responsive Web Design' primarily because we believe web technology will continue to advance further at faster pace, and the trend on Internet will influence technology investments to evolve mostly around web technology. The speed and performance of browser engines will continue to improve, and devices as well as the Internet connection speed will greatly increased as well. There are some best practices for developing high performance web application, refer to [Performance Best Practices](#performance-best-practices)
+
+The interactions between client apps to microservices will need to be done at the micro level. This is to reduce the cross-dependency between client apps and microservices. Diagram below shows the comparison between monolithic design vs. microservices design.
+
+![Monolithic Design vs. Microservices Design](docs/monolithic-vs-microservices.png)
 
 #### UI Components
 
