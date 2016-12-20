@@ -16,18 +16,18 @@ The aims of this software design are to:
 
 At the high-level, the design consists of 3 main layers:
 
-+ [Client Apps](client-apps)
-+ [Service Gateway](service-gateway)
-+ [Microservices](microservices)
++ [Client Apps](#client-apps)
++ [Service Gateway](#service-gateway)
++ [Microservices](#microservices)
 
 ![High-level Design Diagram](docs/high-level-design.png)
 
 The principles of these layers are:
 
 + All communications between client and server are done through a centralized [Service Gateway](#service-gateway). This is to make sure security enforcements, session management, and common logics are managed in one common place.
-+ [Microservices](#microservices) consists of business and data logics. [Client Apps](client-apps) should purely handle user interface (UI), user experience (UX), and static contents.
-+ [Microservices](microservices) should be independent and have no awareness of their surrounding. The actions requested to [Microservices](microservices) are processed through the interactions with its defined unique keys.
-+ As much as possible to reduce cross-dependencies between [Client Apps](client-apps), [Service Gateway](service-gateway), and [Microservices](microservices). The structure should allow the setup of multiple small independent agile teams to manage [Microservices](microservices) and [Client Apps](client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](service-gateway) team.
++ [Microservices](#microservices) consists of business and data logics. [Client Apps](#client-apps) should purely handle user interface (UI), user experience (UX), and static contents.
++ [Microservices](#microservices) should be independent and have no awareness of their surrounding. The actions requested to [Microservices](#microservices) are processed through the interactions with its defined unique keys.
++ As much as possible to reduce cross-dependencies between [Client Apps](#client-apps), [Service Gateway](#service-gateway), and [Microservices](#microservices). The structure should allow the setup of multiple small independent agile teams to manage [Microservices](#microservices) and [Client Apps](#client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](#service-gateway) team.
 
 ### Microservices
 
@@ -69,7 +69,7 @@ The responsibilities of Service Gateway are:
 
 Client Apps consists of user interface (UI) and experience (UX) logics, these are executed at the client devices or browsers. We recommends to adopt 'Responsive Web Design' and 'Single Page Design' primarily because we believe web technology will continue to advance further at faster pace, and the trend on Internet will influence technology investments to evolve mostly around web technology. The speed and performance of browser engines, client devices, and Internet connection will continue to improve. Although there are cases (especially for developing games), native mobile app development is recommended, however for most of usual business applications, we recommends to adopt web application and hybrid mobile app so that to achieve highest flexibility, faster time to market and cost efficiency. No doubt that it is tricky to develop a high performance web application and hybrid mobile app, there are some best practices needed to be followed (refer to [Performance Best Practices](#performance-best-practices)).
 
-The interactions between client apps to microservices will need to be done at the micro level. This is to reduce cross-dependencies between [Client Apps](client-app) and [Microservices](microservices). The diagram below shows the comparison between [Client Apps](client-app) with monolithic design vs. microservices design.
+The interactions between client apps to microservices will need to be done at the micro level. This is to reduce cross-dependencies between [Client Apps](#client-app) and [Microservices](#microservices). The diagram below shows the comparison between [Client Apps](#client-app) with monolithic design vs. microservices design.
 
 ![Monolithic Design vs. Microservices Design](docs/monolithic-vs-microservices.png)
 
