@@ -40,12 +40,12 @@ The characteristics of microservices are:
 
 Make use of 'Domain-Driven Design', which consists of below building blocks:
 
-+ **Entity** is an object with an individual identity, e.g. Customers, Items.
-+ **Value Objects** do not have their own identity, e.g. Address, it makes sense only in the context of a specific customer.
-+ **Aggregates** are composite domain objects. Aggregates are special importance of ...
-+ **Services** contains business logic.
-+ **Repositories** serve to access all entities. Typically, there is persistent database behind repository.
-+ Factories
++ *Entity* is an object with an individual identity, e.g. Customers, Items.
++ *Value Objects* do not have their own identity, e.g. Address, it makes sense only in the context of a specific customer and therefore does not have an independent identity.
++ *Aggregates* are composite domain objects. They facilitate the handling of invariants and other conditions. An order, for instance, can be an aggregate of order lines. This can be used to ensure that an order from a new customer doesn't exceed a certain value. This is a condition that has to be fulfilled by calculating values from the order lines so that the order as *Aggregate* can control these conditions.
++ *Services* contains business logic.
++ *Repositories* serve to access all entities. Typically, there is persistent database behind repository.
++ *Factories* are mostly useful to generate complext domain objects.
 
 ### Service Gateway
 
