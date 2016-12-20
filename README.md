@@ -1,24 +1,24 @@
 # Design Guide
 
-This is a DRAFT design guide outlining opinions on software development best practices, technology standards, frameworks, and design patterns. It also covers the recommendation for setting up an effective team structure based on the defined go-to software design. The focus of this design guide is primarily intended for the development of modern web and mobile application.
+This is a DRAFT design guide outlining opinions on software development best practices, technology standards, frameworks, and design patterns. It also covers the recommendation for setting up an effective team structure by aligning it based on the defined go-to software design. The focus of this design guide is primarily intended for the development of modern web and mobile application.
 
 This document is meant to be a living document. The software best practices, technology standards, frameworks, and design patterns are continuously changing, and as they do and have been validated, this document will be updated accordingly.
 
 ## Software Design
 
-The aims of the software design are to:
+The aims of this software design are to:
 
-+ Define a list of the recommended best practices, frameworks, and design patterns to be used as the development standards.
-+ Set a path for adopting and/or migrating to the recommended technologies, frameworks and design patterns.
++ Define a list of the recommended best practices, technology standards, frameworks, and design patterns to be used as a common development standard for developers.
++ Set a path for adopting and/or migrating to the recommended best practices, technology standards, frameworks and design patterns.
 + Ensure consistency and future extendability of the design.
 + Achieve high maintainability of the code.
-+ Achieve high coverage & compatibility across various of client devices.
++ Achieve high code coverage & compatibility across various of client devices.
 
 At the high-level, the design consists of 3 main layers:
 
-+ Client Apps
-+ Service Gateway
-+ Microservices
++ [Client Apps](client-apps)
++ [Service Gateway](service-gateway)
++ [Microservices](microservices)
 
 ![High-level Design Diagram](docs/high-level-design.png)
 
@@ -27,15 +27,15 @@ The principles of these layers are:
 + All communications between client and server are done through a centralized [Service Gateway](#service-gateway). This is to make sure security enforcements, session management, and common logics are managed in one common place.
 + [Microservices](#microservices) consists of business and data logics. [Client Apps](client-apps) should purely handle user interface (UI), user experience (UX), and static contents.
 + [Microservices](microservices) should be independent and have no awareness of their surrounding. The actions requested to [Microservices](microservices) are processed through the interactions with its defined unique keys.
-+ Reduce cross-dependencies between [Client Apps](client-apps), [Service Gateway](service-gateway), and [Microservices](microservices). The structure should allow the setup of multiple small independent agile teams to manage [Microservices](microservices) and [Client Apps](client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](service-gateway) team.
++ As much as possible to reduce cross-dependencies between [Client Apps](client-apps), [Service Gateway](service-gateway), and [Microservices](microservices). The structure should allow the setup of multiple small independent agile teams to manage [Microservices](microservices) and [Client Apps](client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](service-gateway) team.
 
 ### Microservices
 
 The characteristics of *Microservices* are:
 
-+ A small lightweight software of a specialized business logic implementation
-+ Loosely coupled, it can be independently developed, deployed, and scaled
-+ Communicate over network via 'technology agnostic' protocols
++ A small lightweight software of a specialized business logic implementation.
++ Loosely coupled, it can be independently developed, deployed, and scaled.
++ Communicate over network via 'technology agnostic' protocols.
 + Stateless
 
 Make use of 'Domain-Driven Design', which consists of below building blocks:
@@ -67,9 +67,9 @@ The responsibilities of Service Gateway are:
 
 ### Client Apps
 
-Client Apps consists of user interface (UI) and experience (UX) logic, these are executed at the client devices or browsers. We recommends to use 'Responsive Web Design' primarily because we believe web technology will continue to advance further at faster pace, and the trend on Internet will influence technology investments to evolve mostly around web technology. The speed and performance of browser engines will continue to improve, and devices as well as the Internet connection speed will greatly increased as well. There are some best practices for developing high performance web application, refer to [Performance Best Practices](#performance-best-practices)
+Client Apps consists of user interface (UI) and experience (UX) logics, these are executed at the client devices or browsers. We recommends to adopt 'Responsive Web Design' and 'Single Page Design' primarily because we believe web technology will continue to advance further at faster pace, and the trend on Internet will influence technology investments to evolve mostly around web technology. The speed and performance of browser engines, client devices, and Internet connection will continue to improve. Although there are cases (especially for developing games), native mobile app development is recommended, however for most of usual business applications, we recommends to adopt web application and hybrid mobile app so that to achieve highest flexibility, faster time to market and cost efficiency. No doubt that it is tricky to develop a high performance web application and hybrid mobile app, there are some best practices needed to be followed (refer to [Performance Best Practices](#performance-best-practices)).
 
-The interactions between client apps to microservices will need to be done at the micro level. This is to reduce cross-dependencies between client apps and microservices. The diagram below shows the comparison between monolithic design vs. microservices design.
+The interactions between client apps to microservices will need to be done at the micro level. This is to reduce cross-dependencies between [Client Apps](client-app) and [Microservices](microservices). The diagram below shows the comparison between [Client Apps](client-app) with monolithic design vs. microservices design.
 
 ![Monolithic Design vs. Microservices Design](docs/monolithic-vs-microservices.png)
 
@@ -85,7 +85,7 @@ With the UI logics are managed at the client device or browser, the requirements
 
 ## Performance Best Practices
 
-In order to develop a high performance web application, there are some best practices to follow.
+In order to develop a high performance web application and hybrid mobile app, there are some best practices to follow.
 
 + Choose JavaScript and CSS framework which have been optimized and tested to work well across devices. For e.g. [Bootstrap](http://getbootstrap.com/) is a popular CSS framework for developing responsive web design.
 + Optimize all UI artifacts, e.g. reduce image size. Reduce image quality to the optimum quality as needed to display to the users.
