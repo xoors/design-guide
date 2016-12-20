@@ -29,6 +29,39 @@ The principles of these layers are:
 + [Microservices](#microservices) should be independent and have no awareness of their surrounding. The actions requested to [Microservices](#microservices) are processed through the interactions with its defined unique keys.
 + As much as possible to reduce cross-dependencies between [Client Apps](#client-apps), [Service Gateway](#service-gateway), and [Microservices](#microservices). The structure should allow the setup of multiple small independent agile teams to manage [Microservices](#microservices) and [Client Apps](#client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](#service-gateway) team.
 
+### Client Apps
+
+*Client Apps* consists of user interface (UI) and experience (UX) logics, these are executed at the client devices or browsers. We recommends to adopt 'Responsive Web Design' and 'Single Page Design' primarily because we believe web technology will continue to advance further at faster pace, and the trend on Internet will influence technology investments to evolve mostly around web technology. The speed and performance of browser engines, client devices, and Internet connection will continue to improve. Although there are cases (especially for developing games), native mobile app development is recommended, however for most of usual business applications, we recommends to adopt web application and hybrid mobile app so that to achieve highest flexibility, faster time to market and cost efficiency. No doubt that it is tricky to develop a high performance web application and hybrid mobile app, there are some best practices needed to be followed (refer to [Performance Best Practices](#performance-best-practices)).
+
+The interactions between [Client Apps](#client-app) to [Microservices](#microservices) will need to be done at the micro level. This is to reduce cross-dependencies between [Client Apps](#client-app) and [Microservices](#microservices). The diagram below shows the comparison between [Client Apps](#client-app) with monolithic design vs. microservices design.
+
+![Monolithic Design vs. Microservices Design](docs/monolithic-vs-microservices.png)
+
+#### UI Components
+
+
+#### UI Containers
+
+
+#### UI State
+
+With the UI logics are managed at the client device or browser, the requirements to manage application state has increasingly become more complicated. This state can include server responses and cached data, as well as locally created data that has not yet persisted to the server.
+
+### Service Gateway
+
+The responsibilities of Service Gateway are:
+
++ Authentication
++ Authorization
++ Session management
++ Security enforcement
+
+#### Authentication
+
+
+#### Authorization
+
+
 ### Microservices
 
 The characteristics of *Microservices* are:
@@ -45,43 +78,7 @@ Make use of 'Domain-Driven Design', which consists of below building blocks:
 + *Aggregates* are composite domain objects. They facilitate the handling of invariants and other conditions. An order, for instance, can be an aggregate of order lines. This can be used to ensure that an order from a new customer doesn't exceed a certain value. This is a condition that has to be fulfilled by calculating values from the order lines so that the order as *Aggregate* can control these conditions.
 + *Services* contains business logic.
 + *Repositories* serve to access all entities. Typically, there is persistent database behind repository.
-+ *Factories* are mostly useful to generate complext domain objects.
-
-### Service Gateway
-
-The responsibilities of Service Gateway are:
-
-+ Authentication
-+ Authorization
-+ Session management
-+ Security enforcement
-
-
-#### Authentication
-
-
-
-#### Authorization
-
-
-
-### Client Apps
-
-Client Apps consists of user interface (UI) and experience (UX) logics, these are executed at the client devices or browsers. We recommends to adopt 'Responsive Web Design' and 'Single Page Design' primarily because we believe web technology will continue to advance further at faster pace, and the trend on Internet will influence technology investments to evolve mostly around web technology. The speed and performance of browser engines, client devices, and Internet connection will continue to improve. Although there are cases (especially for developing games), native mobile app development is recommended, however for most of usual business applications, we recommends to adopt web application and hybrid mobile app so that to achieve highest flexibility, faster time to market and cost efficiency. No doubt that it is tricky to develop a high performance web application and hybrid mobile app, there are some best practices needed to be followed (refer to [Performance Best Practices](#performance-best-practices)).
-
-The interactions between client apps to microservices will need to be done at the micro level. This is to reduce cross-dependencies between [Client Apps](#client-app) and [Microservices](#microservices). The diagram below shows the comparison between [Client Apps](#client-app) with monolithic design vs. microservices design.
-
-![Monolithic Design vs. Microservices Design](docs/monolithic-vs-microservices.png)
-
-#### UI Components
-
-
-#### UI Containers
-
-
-#### UI State
-
-With the UI logics are managed at the client device or browser, the requirements to manage application state has increasingly become more complicated. This state can include server responses and cached data, as well as locally created data that has not yet persisted to the server.
++ *Factories* are mostly useful to generate complex domain objects.
 
 ## Performance Best Practices
 
