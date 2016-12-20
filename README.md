@@ -37,6 +37,8 @@ The interactions between [Client Apps](#client-app) to [Microservices](#microser
 
 ![Monolithic Design vs. Microservices Design](docs/monolithic-vs-microservices.png)
 
+Although it is possible to migration from monolithic design to microservices design by refactoring the existing monolithic code, but this approach is complex and the results may highly possible will not achieve the intended design of microservices, hence our recommendation for migration to [Microservices](#microservices) is to consider code rewrite.
+
 #### UI Components
 
 
