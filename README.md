@@ -22,32 +22,43 @@ At the high-level, the design consists of 3 main layers:
 
 ![High-level Design Diagram](docs/high-level-design.png)
 
-The principles of these layers are:
+The design principles of these layers are:
 
 + All communications between client and server are done through a centralized [Service Gateway](#service-gateway). This is to make sure security enforcements, session management, and common logics are managed in one common place.
 + [Microservices](#microservices) consists of business and data logics. [Client Apps](#client-apps) should purely handle user interface (UI), user experience (UX), and static contents.
 + [Microservices](#microservices) should be independent and have no awareness of their surrounding. The actions requested to [Microservices](#microservices) are processed through the interactions with its defined unique keys.
-+ As much as possible to reduce cross-dependencies between [Client Apps](#client-apps), [Service Gateway](#service-gateway), and [Microservices](#microservices). The structure should allow the setup of multiple small independent agile teams to manage [Microservices](#microservices) and [Client Apps](#client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](#service-gateway) team.
++ As much as possible to reduce cross-dependencies between [Client Apps](#client-apps), [Service Gateway](#service-gateway), and [Microservices](#microservices). The structure should allow the setup of multiple small independent teams to manage [Microservices](#microservices) and [Client Apps](#client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](#service-gateway) team.
 
-### Client Apps
-
-*Client Apps* consists of user interface (UI) and experience (UX) logics, these are executed at the client devices or browsers. We recommends to adopt 'Responsive Web Design' and 'Single Page Design' primarily because we believe web technology will continue to advance further at faster pace, and the trend on Internet will influence technology investments to evolve mostly around web technology. The speed and performance of browser engines, client devices, and Internet connection will continue to improve. Although there are cases (especially for developing games), native mobile app development is recommended, however for most of usual business applications, we recommends to adopt web application and hybrid mobile app so that to achieve highest flexibility, faster time to market and cost efficiency. No doubt that it is tricky to develop a high performance web application and hybrid mobile app, there are some best practices needed to be followed (refer to [Performance Best Practices](#performance-best-practices)).
-
-The interactions between [Client Apps](#client-app) to [Microservices](#microservices) will need to be done at the micro level. This is to reduce cross-dependencies between [Client Apps](#client-app) and [Microservices](#microservices). The diagram below shows the comparison between [Client Apps](#client-app) with monolithic design vs. microservices design.
+The interactions between [Client Apps](#client-app) to [Microservices](#microservices) will need to be as much as possible done at the level of each service. This is to reduce cross-dependencies between [Client Apps](#client-app) and [Microservices](#microservices). This is needed to reduce cross-dependencies and to avoid it to become monolithic. The diagram below shows the comparison between application with monolithic design vs. microservices design.
 
 ![Monolithic Design vs. Microservices Design](docs/monolithic-vs-microservices.png)
 
-Although it is possible to migration from monolithic design to microservices design by refactoring the existing monolithic code, but this approach is complex and the results may highly possible will not achieve the intended design of microservices, hence our recommendation for migration to [Microservices](#microservices) is to consider code rewrite.
+Although it may be possible to migration an application that was built on monolithic design to microservices design by refactoring the existing code, however this approach is complex and the results may highly possible will not achieve the intended design of microservices. To achieve a clean microservices solution, it is recommended to consider code rewrite.
 
-#### UI Components
+### Client Apps
 
+*Client Apps* consists of user interface (UI) and experience (UX) logics, these are executed at the client devices or browsers. To achieve highest code coverage, faster time to market, and cost efficiency, the 'Responsive Web Design' and 'Single Page Design' will be an ideal technology solution. There are cases (especially for developing games application), native mobile app development is recommended.
 
-#### UI Containers
+To achieve high performance web application and mobile hybrid app solution, there are some best practices to be followed (refer to [Performance Best Practices](#performance-best-practices)).
 
+#### User Interface (UI) Component
 
-#### UI State
+The characteristics of UI component are:
 
-With the UI logics are managed at the client device or browser, the requirements to manage application state has increasingly become more complicated. This state can include server responses and cached data, as well as locally created data that has not yet persisted to the server.
++ Follow the 'Atomic Design' principles (refer to [Atomic Design](http://atomicdesign.bradfrost.com).
++ Behave as 'Dump Component', it has no awareness of the surrounding. It interacts through its defined request props.
++ Should be small and has a specific specialized UI purpose.
+
+#### User Interface (UI) Container
+
++ Act as 'Smart Component', it provides the information to UI component and stitches interactions between multiple UI components.
++ Facilitate data request to and response from server through rest API calls.
+
+#### User Interface (UI) State
+
+With the application UI logics are managed at the client device or browser, the requirements to manage application state has increasingly become more complicated. The state can include server responses and cached data, as well as locally created data that has not yet persisted to the server.
+
+#### Code Structure
 
 ### Service Gateway
 
@@ -82,6 +93,8 @@ Make use of 'Domain-Driven Design', which consists of below building blocks:
 + *Repositories* serve to access all entities. Typically, there is persistent database behind repository.
 + *Factories* are mostly useful to generate complex domain objects.
 
+#### Code Structure
+
 ## Performance Best Practices
 
 In order to develop a high performance web application and hybrid mobile app, there are some best practices to follow.
@@ -112,3 +125,16 @@ In order to develop a high performance web application and hybrid mobile app, th
 + Use performance speed test to identify bottlenecks, for e.g. 'Google PageSpeed'.
 
 ## Team Structure
+
+Guidelines for setting up the team structure are:
+
++ It must be organized by following the application design.
++ The ideal size of the team should be between two to maximum nine people.
++ Each team must be independent from each other. Interactions between teams are done through their established design contracts.
++ No duplication of ownership and responsibility between teams. Each team should own unique defined capabilities.
++ Cross-functional team of individuals who have the ability, knowledge and skills to manage end-to-end their appointed scope.
++ Organize team alignment based on products, avoid from defining it based on projects.
+
+Below diagram illustrates the high-level structure of teams with its cross dependencies.
+
+![Team Structure](docs/team-structure.png)
