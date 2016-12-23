@@ -27,7 +27,7 @@ The design principles of these layers are:
 + All communications between client and server are done through a centralized [Service Gateway](#service-gateway). This is to make sure security enforcements, session management, and common logics are managed in one common place.
 + [Microservices](#microservices) consists of business and data logics. [Client Apps](#client-apps) should purely handle user interface (UI), user experience (UX), and static contents.
 + [Microservices](#microservices) should be independent and have no awareness of their surrounding. The actions requested to [Microservices](#microservices) are processed through the interactions with its defined unique keys.
-+ As much as possible to reduce cross-dependencies between [Client Apps](#client-apps), [Service Gateway](#service-gateway), and [Microservices](#microservices). The structure should allow the setup of multiple small independent teams to manage [Microservices](#microservices) and [Client Apps](#client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](#service-gateway) team.
++ Maintain as minimal as possible the cross-dependencies between [Client Apps](#client-apps), [Service Gateway](#service-gateway), and [Microservices](#microservices). The structure should allow the setup of multiple small independent teams to manage [Microservices](#microservices) and [Client Apps](#client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](#service-gateway) team.
 
 The interactions between [Client Apps](#client-app) to [Microservices](#microservices) will need to be as much as possible done at the level of each service. This is to reduce cross-dependencies between [Client Apps](#client-app) and [Microservices](#microservices). This is needed to reduce cross-dependencies and to avoid it to become monolithic. The diagram below shows the comparison between application with monolithic design vs. microservices design.
 
@@ -45,7 +45,7 @@ To achieve high performance web application and mobile hybrid app solution, ther
 
 The characteristics of UI component are:
 
-+ Follow the 'Atomic Design' principles (refer to [Atomic Design](http://atomicdesign.bradfrost.com).
++ Follow the 'Atomic Design' principles (refer to [Atomic Design](http://atomicdesign.bradfrost.com)).
 + Behave as 'Dump Component', it has no awareness of the surrounding. It interacts through its defined request props.
 + Should be small and has a specific specialized UI purpose.
 
@@ -126,15 +126,15 @@ In order to develop a high performance web application and hybrid mobile app, th
 
 ## Team Structure
 
-Guidelines for setting up the team structure are:
+The guidelines for setting up team structure are:
 
 + It must be organized by following the application design.
-+ The ideal size of the team should be between two to maximum nine people.
++ The ideal size of a team should be between two to maximum nine people.
 + Each team must be independent from each other. Interactions between teams are done through their established design contracts.
 + No duplication of ownership and responsibility between teams. Each team should own unique defined capabilities.
 + Cross-functional team of individuals who have the ability, knowledge and skills to manage end-to-end their appointed scope.
 + Organize team alignment based on products, avoid from defining it based on projects.
 
-Below diagram illustrates the high-level structure of teams with its cross dependencies.
+Below diagram illustrates the high-level team structure with its cross dependencies.
 
 ![Team Structure](docs/team-structure.png)
