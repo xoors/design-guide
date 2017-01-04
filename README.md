@@ -9,10 +9,10 @@ This document is meant to be a living document. The software best practices, tec
 The aims of this software design are to:
 
 + Define a list of the recommended best practices, technology standards, frameworks, and design patterns to be used as a common development standard for developers.
-+ Set a path for adopting and/or migrating to the recommended best practices, technology standards, frameworks and design patterns.
++ Set a path for adopting and/or migrating to the recommended design guide.
 + Ensure consistency and future extendability of the design.
 + Achieve high maintainability of the code.
-+ Achieve high code coverage & compatibility across various of client devices.
++ Achieve high code coverage & compatibility across various of client devices, as well as across client and server.
 
 At the high-level, the design consists of 3 main layers:
 
@@ -37,7 +37,7 @@ Although it may be possible to migration an application that was built on monoli
 
 ### Client Apps
 
-*Client Apps* consists of user interface (UI) and experience (UX) logics, these are executed at the client devices or browsers. To achieve highest code coverage, faster time to market, and cost efficiency, the 'Responsive Web Design' and 'Single Page Design' will be an ideal technology solution. There are cases (especially for developing games application), native mobile app development is recommended.
+*Client Apps* consists of user interface (UI) and experience (UX) logics, these are executed at the client devices or browsers. To achieve highest code coverage, faster time to market, and cost efficiency, the 'Responsive Web Design' and 'Single Page Design' will be an ideal technology solution. There are cases (especially for developing games application with intensive graphics processing), native app development is recommended.
 
 To achieve high performance web application and mobile hybrid app solution, there are some best practices to be followed (refer to [Performance Best Practices](#performance-best-practices)).
 
@@ -57,8 +57,6 @@ The characteristics of UI component are:
 #### User Interface (UI) State
 
 With the application UI logics are managed at the client device or browser, the requirements to manage application state has increasingly become more complicated. The state can include server responses and cached data, as well as locally created data that has not yet persisted to the server.
-
-#### Code Structure
 
 ### Service Gateway
 
@@ -93,8 +91,6 @@ Make use of 'Domain-Driven Design', which consists of below building blocks:
 + *Repositories* serve to access all entities. Typically, there is persistent database behind repository.
 + *Factories* are mostly useful to generate complex domain objects.
 
-#### Code Structure
-
 ## Performance Best Practices
 
 In order to develop a high performance web application and hybrid mobile app, there are some best practices to follow.
@@ -108,7 +104,7 @@ In order to develop a high performance web application and hybrid mobile app, th
 + Make sure all client logics and contents are cacheable on CDN (Content Delivery Network). Set appropriate cache settings and expiration time.
 + Remove unused JS and CSS components. Avoid from blindly using common superset framework. Common framework tends to be packaged with all supported components which all of them may not be used in your application.
 + Use 'rem' instead of 'px' to reduce hardcode logic and redundant code in CSS.
-+ Adopt 'Client MVC' design, do not use server side to process UI / UX logic.
++ Adopt 'Client MVC' design, do not generate the UI on the server.
 + Use 'Single Page Application' design.
 + HTML DOM processing is slow, adopt 'Virtual DOM' approach.
 + Clean segregation between UI / UX, Content, and Data logic.
@@ -138,3 +134,20 @@ The guidelines for setting up team structure are:
 Below diagram illustrates the high-level team structure with its cross dependencies.
 
 ![Team Structure](docs/team-structure.png)
+
+## Application Code Structure
+
+Application is structured based on the code execution either at the client, server or both. E.g.
+
+```
+transactions/
+├── client/
+|   └── actions/
+|   ├── components/
+|   ├── containers/
+|   └── routes
+├── lib
+└── server
+    ├── services
+    ├── repositories
+```
