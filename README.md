@@ -146,8 +146,9 @@ transactions/
 |   ├── components/
 |   ├── containers/
 |   └── routes
-├── lib
+├── shared
 └── server
+    ├── entities
     ├── services
     ├── repositories
 ```
