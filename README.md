@@ -84,8 +84,8 @@ The characteristics of *Microservices* are:
 
 Make use of 'Domain-Driven Design', which consists of below building blocks:
 
-+ *Entity* is an object with an individual identity, e.g. Customers, Items.
-+ *Value Objects* do not have their own identity, e.g. Address, it makes sense only in the context of a specific customer and therefore does not have an independent identity.
++ *Entity* is an object with an individual identity, e.g. Persons, Tasks.
++ *Value Objects* do not have their own identity, e.g. Gender, it makes sense only in the context of a specific 'Person' and therefore does not have an independent identity.
 + *Aggregates* are composite domain objects. They facilitate the handling of invariants and other conditions. An order, for instance, can be an aggregate of order lines. This can be used to ensure that an order from a new customer doesn't exceed a certain value. This is a condition that has to be fulfilled by calculating values from the order lines so that the order as *Aggregate* can control these conditions.
 + *Services* contains business logic.
 + *Repositories* serve to access all entities. Typically, there is persistent database behind repository.
@@ -140,15 +140,17 @@ Below diagram illustrates the high-level team structure with its cross dependenc
 Application is structured based on the code execution either at the client, server or both. E.g.
 
 ```
-transactions/
+scheduler/
 ├── client/
 |   └── actions/
 |   ├── components/
 |   ├── containers/
 |   └── routes
-├── shared
-└── server
-    ├── entities
-    ├── services
-    ├── repositories
+├── shared/
+└── server/
+    ├── entities/
+    |   ├── persons
+    |   └── tasks
+    ├── services/
+    └── repositories/
 ```
