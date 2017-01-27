@@ -33,7 +33,7 @@ The interactions between [Client Apps](#client-app) to [Microservices](#microser
 
 ![Monolithic Design vs. Microservices Design](docs/monolithic-vs-microservices.png)
 
-Although it may be possible to migration an application that was built on monolithic design to microservices design by refactoring the existing code, however this approach is complex and the results may highly possible will not achieve the intended design of microservices. To achieve a clean microservices solution, it is recommended to consider code rewrite.
+Although it may be possible to migrate an application that was built on monolithic design to microservices design by refactoring the existing code, however this approach is complex and the results may highly possible will not achieve the intended design of microservices. To achieve a clean microservices solution, it is recommended to consider code rewrite.
 
 ### Client Apps
 
@@ -86,7 +86,7 @@ Make use of 'Domain-Driven Design', which consists of below building blocks:
 
 + *Entity* is an object with an individual identity, e.g. Persons, Tasks.
 + *Value Objects* do not have their own identity, e.g. Gender, it makes sense only in the context of a specific 'Person' and therefore does not have an independent identity.
-+ *Aggregates* are composite domain objects. They facilitate the handling of invariants and other conditions. An order, for instance, can be an aggregate of order lines. This can be used to ensure that an order from a new customer doesn't exceed a certain value. This is a condition that has to be fulfilled by calculating values from the order lines so that the order as *Aggregate* can control these conditions.
++ *Aggregates* are composite domain objects. They facilitate the handling of invariants and other conditions.
 + *Services* contains business logic.
 + *Repositories* serve to access all entities. Typically, there is persistent database behind repository.
 + *Factories* are mostly useful to generate complex domain objects.
