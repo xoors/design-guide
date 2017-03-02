@@ -8,11 +8,12 @@ This document is meant to be a living document. The software best practices, tec
 
 The aims of this software design are to:
 
-+ Define a list of the recommended best practices, technology standards, frameworks, and design patterns to be used as a common development standard for developers.
++ Define a recommended design guide to be used as a common development standard for developers.
 + Set a path for adopting and/or migrating to the recommended design guide.
 + Ensure consistency and future extendability of the design.
 + Achieve high maintainability of the code.
-+ Achieve high code coverage & compatibility across various of client devices, as well as across client and server.
++ Achieve build once and run in as many devices as possible.
++ Achieve highest code coverage at the server-side and client-side. This will be an implementation of isomorphic design.
 
 At the high-level, the design consists of 3 main layers:
 
@@ -24,10 +25,10 @@ At the high-level, the design consists of 3 main layers:
 
 The design principles of these layers are:
 
-+ All communications between client and server are done through a centralized [Service Gateway](#service-gateway). This is to make sure security enforcements, session management, and common logics are managed in one common place.
++ All communications between client and server are done through a centralized [Service Gateway](#service-gateway). This is to make sure security enforcements, session management, and common controller logics are managed in one common place.
 + [Microservices](#microservices) consists of business and data logics. [Client Apps](#client-apps) should purely handle user interface (UI), user experience (UX), and static contents.
 + [Microservices](#microservices) should be independent and have no awareness of their surrounding. The actions requested to [Microservices](#microservices) are processed through the interactions with its defined unique keys.
-+ Maintain as minimal as possible the cross-dependencies between [Client Apps](#client-apps), [Service Gateway](#service-gateway), and [Microservices](#microservices). The structure should allow the setup of multiple small independent teams to manage [Microservices](#microservices) and [Client Apps](#client-apps), and on the same time to ensure a single control of security and common logic in a centralized small [Service Gateway](#service-gateway) team.
++ Maintain as minimal as possible the cross-dependencies between [Client Apps](#client-apps), [Service Gateway](#service-gateway), and [Microservices](#microservices). The structure should allow the setup of multiple small independent teams to manage [Microservices](#microservices) and [Client Apps](#client-apps), and on the same time to ensure a single control of security and common controller logic in a centralized small [Service Gateway](#service-gateway) team.
 
 The interactions between [Client Apps](#client-app) to [Microservices](#microservices) will need to be as much as possible done at the level of each service. This is to reduce cross-dependencies between [Client Apps](#client-app) and [Microservices](#microservices). This is needed to reduce cross-dependencies and to avoid it to become monolithic. The diagram below shows the comparison between application with monolithic design vs. microservices design.
 
