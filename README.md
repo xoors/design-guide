@@ -8,8 +8,8 @@ This document is meant to be a living document. The software best practices, tec
 
 The aims of this software design are to:
 
-+ Define a recommended design guide to be used as a common development standard for developers.
-+ Set a path for adopting and/or migrating to the recommended design guide.
++ Define design recommendation to be used as a common development standard for developers.
++ Set a path for adopting and/or migrating to the recommended design.
 + Ensure consistency and future extendability of the design.
 + Achieve high maintainability of the code.
 + Achieve build once and run in as many devices as possible.
@@ -135,6 +135,16 @@ The guidelines for setting up team structure are:
 Below diagram illustrates the high-level team structure with its cross dependencies.
 
 ![Team Structure](docs/team-structure.png)
+
+## Application Packages
+
++ 3rd Party Libraries
++ Common Functions
++ Common Value Objects
++ Common Components
++ Contents
++ Portal
++ Modules
 
 ## Application Code Structure
 
